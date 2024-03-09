@@ -62,22 +62,27 @@ public class ArrayIntQueue implements IntQueue {
         return value;
     }
 
+    /* */
+
     /** {@inheritDoc} */
     public boolean enqueue(Integer value) {
         ensureCapacity();
         int tail = (head + size) % elementData.length;
-        elementData[tail] = value;
+        elementData[tail] = value;        
         size++;
         return true;
     }
 
     /** {@inheritDoc} */
     public boolean isEmpty() {
-        return size >= 0;
+        return size == 0;
     }
 
     /** {@inheritDoc} */
     public Integer peek() {
+        if(isEmpty()){
+            return null;
+        }
         return elementData[head];
     }
 
